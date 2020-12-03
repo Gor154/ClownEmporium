@@ -5,6 +5,7 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ray's Grocery - Product Information</title>
 <link href="../../../../../COSC%20304%20Stuff/COSC304-Lab10/WebContent/css/bootstrap.min.css" rel="stylesheet">
 </head>
