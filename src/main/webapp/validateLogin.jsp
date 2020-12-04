@@ -39,7 +39,7 @@
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
 			ResultSet rs = pst.executeQuery();
 
-			if(!rs.next()) {
+			if(rs.next()) {
 				return null;
 			}
 			retStr = username;
