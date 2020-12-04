@@ -7,7 +7,6 @@
 <title>Create User</title>
 </head>
 <body>
-
 <h1>Enter Your Information In This Super Secure Form</h1>
 <form method="get" action="login.jsp">
 <table>
@@ -25,33 +24,29 @@
 <tr><td><input type="submit" value="Enter"><input type="reset" value="Reset"></td></tr>
 </table>
 </form>
-
-<!%
-public boolean isValidEmail(String email){
-    return email.contains("@");
-}
-
-public boolean isValidName(String name){
-    char[] arr = name.toCharArray();
-    for (char elem : arr) 
-        if(Character.isDigit(elem))
+<script>
+    function validateForm(){
+        var fn = document.forms["form1"]["firstName"].value;
+        var ln = document.forms["form1"]["lastName"].value;
+    
+        // validate lastname and fistname
+        for(var i = 0; i < 9; i++){
+            if(fn.includes(i) || ln.includes(i)){
+                window.alert('Invalid Name');
+                return false;
+            }
+        }
+        // validate email
+        var em = document.forms["form1"]["email"].value;
+        if(!em.includes('@')){
+            window.alert('Invalid Email');
             return false;
-    return true;  
-}
-%>
-
+        }
+    }
+</script>
 <%
-//Note: Forces loading of SQL Server driver
-try
-{	// Load driver class
-    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-}
-catch (java.lang.ClassNotFoundException e)
-{
-    out.println("ClassNotFoundException: " +e);
-}
-// Get items for validation
-//(firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password)
+// Get items from form
+// (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password)
 String[] arr = {
     request.getParameter("firstName"),
     request.getParameter("lastName"),
@@ -65,6 +60,15 @@ String[] arr = {
     request.getParameter("userid"),
     request.getParameter("password")
 };
+//Note: Forces loading of SQL Server driver
+try
+{	// Load driver class
+    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+}
+catch (java.lang.ClassNotFoundException e)
+{
+    out.println("ClassNotFoundException: " +e);
+}
 
     // Make the connection
     final String url = "jdbc:sqlserver://clownemporium.database.windows.net:1433;database=ClownStuff;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;;loginTimeout=30;";
