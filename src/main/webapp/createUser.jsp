@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Enter Your Information In This Super Secure Form</h1>
-<form method="get" action="login.jsp">
+<form name="form1" method="post" action="login.jsp" onsubmit="return validateForm()">
 <table>
 <tr><td>First Name</td><td><input type="text" name="firstName" size="45"></td></tr>
 <tr><td>Last Name</td><td><input type="text" name="lastName" size="45"></td></tr>
