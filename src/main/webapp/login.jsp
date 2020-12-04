@@ -21,16 +21,16 @@
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                        <a class="nav-link" href="index.jsp"><strong>Home</strong></a>
+                                        <a class="nav-link" href="index.jsp"><strong style="color: black;">Home</strong></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="login.jsp">Login</a>
+                                        <a class="nav-link" href="login.jsp"><p style="color: black;">Login</p></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="logout.jsp">Logout</a>
+                                        <a class="nav-link" href="logout.jsp"><p style="color: black;">Logout</p></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="createUser.jsp">Create New Account</a>
+                                        <a class="nav-link" href="createUser.jsp"><p style="color: black;">Create New Account</p></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="admin.jsp"><p style="color: red;">Admin</p></a>

@@ -50,8 +50,8 @@
 		finally
 		{
 			closeConnection();
-		}	
-		
+		}
+
 		if(retStr != null)
 		{	session.removeAttribute("loginMessage");
 			session.setAttribute("authenticatedUser",username);
