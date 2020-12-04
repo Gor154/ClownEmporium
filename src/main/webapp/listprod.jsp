@@ -40,7 +40,7 @@ ResultSet prs;
 NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
 try(Connection conn = DriverManager.getConnection(url, uid, pw);
-	PreparedStatement pst = conn.prepareStatement("SELECT productName, productPrice, productId FROM product WHERE productName LIKE ? OR categoryId LIKE ?;")
+	PreparedStatement pst = conn.prepareStatement("SELECT productName, productPrice, productId, productImageUrl FROM product WHERE productName LIKE ? OR categoryId LIKE ?;")
 ){ 
 	pst.setString(1, ("%" + userinputname + "%"));// set the ? in pst to the users input, need % for the like clause
 	pst.setString(2, ("%" + userinputname + "%"));// set the ? in pst to the users input, need % for the like clause
