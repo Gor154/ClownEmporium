@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.io.*,java.sql.*"%>
+<%@ page import="javax.swing.plaf.nimbus.State" %>
 <%@ include file="jdbc.jsp" %>
 <%
 	String authenticatedUser = null;
@@ -35,9 +36,12 @@
 		try(Connection conn = DriverManager.getConnection(url, uid, pw); PreparedStatement pst = conn.prepareStatement("SELECT userid FROM customer WHERE userid = ? AND password = ?")){
 			pst.setString(1,username);
 			pst.setString(2,password);
+			Statement desperation = conn.createStatement();
+			String desp = "SELECT * FROM customer WHERE userid = \'"+username+"\' AND password = \'"+password+"\'";
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
 			ResultSet rs = pst.executeQuery();
-			if(rs.next()==false) {
+			ResultSet rs2 = desperation.executeQuery(desp);
+			if(!rs2.next()) {
 				return null;
 			}
 			retStr = username;
@@ -57,8 +61,8 @@
 		{	session.removeAttribute("loginMessage");
 			session.setAttribute("authenticatedUser",username);
 		}
-		else;
-		session.setAttribute("loginMessage","Could not connect to the system using that username/password. Чтоб я здох");
+		else
+			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
 
 		return retStr;
 	}

@@ -40,7 +40,7 @@ pageEncoding="ISO-8859-1" session="false"%>
                     <li class="nav-item">
                         <a class="nav-link" href="admin.jsp"><p style="color: firebrick;">
                             <%
-                                HttpSession sessionsa = request.getSession(false);
+                                HttpSession sessionsa = request.getSession(true);
                                 String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
                                 if(authenticatedUser != null)
                                     out.print("Signed in as: " + authenticatedUser);

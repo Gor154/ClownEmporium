@@ -15,6 +15,7 @@
 		response.sendRedirect("index.jsp");		// Successful login
 	else
 		response.sendRedirect("login.jsp");		// Failed login - redirect back to login page with a message
+		//out.println("AAAAAAAAAAH");
 %>
 
 <%!
@@ -28,9 +29,9 @@
 		final String pw = "dydvak-godpY8-horbag";
 
 		if(username == null || password == null)
-			return null;
+				return null;
 		if((username.length() == 0) || (password.length() == 0))
-			return null;
+				return null;
 
 		try(Connection conn = DriverManager.getConnection(url, uid, pw); PreparedStatement pst = conn.prepareStatement("SELECT userid FROM customer WHERE userid = ? AND password = ?")){
 			pst.setString(1,username);
@@ -45,9 +46,6 @@
 		catch (SQLException ex) {
 			out.println(ex);
 		}
-		catch (Exception e){
-			out.println(e);
-		}
 		finally
 		{
 			closeConnection();
@@ -57,8 +55,8 @@
 		{	session.removeAttribute("loginMessage");
 			session.setAttribute("authenticatedUser",username);
 		}
-		else;
-		session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
+		else
+			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
 
 		return retStr;
 	}
