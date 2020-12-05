@@ -58,16 +58,28 @@
 
 <%
 // TODO: Write SQL query that prints out total order amount by day
-final String sql = "SELECT orderDate, totalAmount FROM ordersummary";
-try(Connection conn = DriverManager.getConnection(url, uid, pw); Statement st = conn.createStatement()){
-    NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
-    ResultSet rs = st.executeQuery(sql);
+final String firstsql = "SELECT orderDate, totalAmount FROM ordersummary;";
+final String secondsql = "SELECT firstName, lastName FROM customer;";
 
+try(Connection conn = DriverManager.getConnection(url, uid, pw);
+    Statement firstst = conn.createStatement();
+    Statement secondst = conn.createStatement()
+    ){
+    NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
+    ResultSet rs = firstst.executeQuery(firstsql);
+    ResultSet rsc = secondst.executeQuery(secondsql);
     if(rs != null){ 
         out.println("<h1>Admin Sales Report by Day</h1>");
         out.println("<table border=1 width=300px><tr><th>OrderDate</th><th>TotalAmount</th></tr>");//start the table
         while(rs.next())
 		out.println("<tr><td>" + rs.getDate("orderDate") + "</td><td>" + currFormat.format(rs.getDouble("totalAmount")) + "</td></tr>");
+    out.println("</table>");//end the table
+    }
+    if(rsc != null){
+        out.println("<br><h1>All Customers</h1>");
+        out.println("<table border=1 width=300px><tr><th>First Name</th><th>Last Name</th></tr>");//start the table
+        while(rsc.next())
+		out.println("<tr><td>" + rsc.getString("firstName") + "</td><td>" + rsc.getString("lastName") + "</td></tr>");
     out.println("</table>");//end the table
     }
 }catch(SQLException sqlex){

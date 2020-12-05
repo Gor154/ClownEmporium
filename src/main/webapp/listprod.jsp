@@ -85,7 +85,7 @@ ResultSet prs;
 NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
 try(Connection conn = DriverManager.getConnection(url, uid, pw);
-	PreparedStatement pst = conn.prepareStatement("SELECT productName, productPrice, productId, productImageUrl FROM product WHERE productName LIKE ? OR categoryId LIKE ?;")
+	PreparedStatement pst = conn.prepareStatement("SELECT productName, productPrice, productId, productImageUrl FROM product WHERE productName LIKE ? OR categoryName LIKE ?;")
 ){ 
 	pst.setString(1, ("%" + userinputname + "%"));// set the ? in pst to the users input, need % for the like clause
 	pst.setString(2, ("%" + userinputname + "%"));// set the ? in pst to the users input, need % for the like clause
@@ -96,7 +96,7 @@ try(Connection conn = DriverManager.getConnection(url, uid, pw);
 		// make productName, productPrice, productId available to other .jsps
 		// print out the ResultSet.
 		out.println("<tr><td><a href = \"product.jsp?id=" + prs.getString("productId") + "\" > " + prs.getString("productName") + " </a></td><td>"+ prs.getString("productPrice") + "</td><td>"+ prs.getString("productId")+ "</td><td><img src=\"" + prs.getString("productImageURL") + "\"></tr></table>");
-		 out.print("<form method = \"POST\" action = \"addcart.jsp?id="+prs.getString("productId")+"&name="+prs.getString("productName")+"&price="+prs.getDouble("productPrice")+"\"><input type=\"submit\" value=\"Add to Cart\"></form>");
+		out.print("<form method = \"POST\" action = \"addcart.jsp?id="+prs.getString("productId")+"&name="+prs.getString("productName")+"&price="+prs.getDouble("productPrice")+"\"><input type=\"submit\" value=\"Add to Cart\"></form>");
 	}
 }catch(SQLException a){
 	out.print(a);
