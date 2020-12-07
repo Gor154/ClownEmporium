@@ -59,7 +59,7 @@ String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 					<li class="nav-item">
 						<a class="nav-link" href="admin.jsp"><p style="color: firebrick;">
 							<%
-								String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
+								authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 								if(authenticatedUser != null)
 									out.print("Signed in as: " + authenticatedUser);
 							%>
