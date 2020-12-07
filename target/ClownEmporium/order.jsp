@@ -26,6 +26,8 @@ String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 	
 	<title>
 		<%
+			HttpSession sessionsa = request.getSession(true);
+			String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 		if(authenticatedUser != null)
 				out.print(authenticatedUser);
 		%>
@@ -57,7 +59,6 @@ String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 					<li class="nav-item">
 						<a class="nav-link" href="admin.jsp"><p style="color: firebrick;">
 							<%
-								HttpSession sessionsa = request.getSession(false);
 								String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 								if(authenticatedUser != null)
 									out.print("Signed in as: " + authenticatedUser);
