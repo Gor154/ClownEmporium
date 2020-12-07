@@ -96,7 +96,7 @@ try(Connection conn = DriverManager.getConnection(url, uid, pw);
 		// make productName, productPrice, productId available to other .jsps
 		// print out the ResultSet.
 		out.println("<tr><td><a href = \"product.jsp?id=" + prs.getString("productId") + "\" > " + prs.getString("productName") + " </a></td><td>"+ prs.getString("productPrice") + "</td><td>"+ prs.getString("productId")+ "</td><td><img src=\"" + prs.getString("productImageURL") + "\"></tr></table>");
-		 out.print("<form method = \"POST\" action = \"addcart.jsp?id="+prs.getString("productId")+"&name="+prs.getString("productName")+"&price="+prs.getDouble("productPrice")+"\"><input type=\"submit\" value=\"Add to Cart\"></form>");
+		out.print("<form method = \"POST\" action = \"addcart.jsp?id="+prs.getString("productId")+"&name="+prs.getString("productName")+"&price="+prs.getDouble("productPrice")+"\"><input type=\"submit\" value=\"Add to Cart\"></form>");
 	}
 }catch(SQLException a){
 	out.print(a);

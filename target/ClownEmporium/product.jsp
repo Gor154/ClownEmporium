@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ray's Grocery - Product Information</title>
+<title>clownemporium Product Information</title>
 <link href="../../../../../COSC%20304%20Stuff/COSC304-Lab10/WebContent/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -22,14 +22,15 @@ final String uid = "gor154@clownemporium";
 final String pw = "dydvak-godpY8-horbag";
 
 try(Connection conn = DriverManager.getConnection(url, uid, pw);
-	PreparedStatement pst = conn.prepareStatement("SELECT productName, productPrice, productId, productImageURL, productImage FROM product WHERE productId =?;")
+	PreparedStatement pst = conn.prepareStatement("SELECT productName, productPrice, productId, productImageURL, productImage, productDesc FROM product WHERE productId =?;")
 ){ 
    
 	pst.setInt(1, Integer.parseInt(productId));
     ResultSet rst = pst.executeQuery();
     rst.next();
     out.println("<h2>" + rst.getString("productName") + "</h2>");
-    
+    out.println("<h2>" + rst.getString("productDesc") + "</h2>");
+
     // TODO: If there is a productImageURL, display using IMG tag
     String imageURL = rst.getString("productImageURL"); 
     if(imageURL != null)

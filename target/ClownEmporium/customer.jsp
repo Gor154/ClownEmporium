@@ -56,7 +56,6 @@
 
 <%
 	String userName = (String) session.getAttribute("authenticatedUser");
-
 %>
 
 <%
@@ -91,6 +90,7 @@ try(Connection conn = DriverManager.getConnection(url, uid, pw); Statement stmt 
 	out.println("<tr><th>Postal Code</th><td>" + rs.getString("postalCode") + "</td></tr>");
 	out.println("<tr><th>Country</th><td>" + rs.getString("country") + "</td></tr>");
 	out.println("<tr><th>User Id</th><td>" + rs.getString("userid") + "</td></tr> </table>");
+	out.println("<a href=\"updateCustomer.jsp\">Update Info</a>");
 }catch (SQLException ex) {
 	out.println(ex);
 }

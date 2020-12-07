@@ -3,7 +3,7 @@ pageEncoding="ISO-8859-1" session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Ray's Grocery Main Page</title>
+        <title>Clown Emporium</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">      
         
@@ -53,7 +53,7 @@ pageEncoding="ISO-8859-1" session="false"%>
 
         </div>
                 </nav>  
-                <h1 align="center">Welcome to Ray's Grocery</h1>
+                <h1 align="center">Welcome to the Clown Emporium</h1>
 
                 <h2 align="center"><a href="listprod.jsp">Begin Shopping</a></h2>
 
