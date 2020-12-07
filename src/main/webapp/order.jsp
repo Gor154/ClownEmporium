@@ -26,6 +26,8 @@ String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 	
 	<title>
 		<%
+			HttpSession sessionsa = request.getSession(true);
+			String authenticatedUser = (String) sessionsa.getAttribute("authenticatedUser");
 		if(authenticatedUser != null)
 				out.print(authenticatedUser);
 		%>
